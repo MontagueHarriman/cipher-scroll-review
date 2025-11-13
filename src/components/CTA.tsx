@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { FileText, Shield } from "lucide-react";
+import { SubmitManuscriptDialog } from "@/components/SubmitManuscriptDialog";
+import { ReviewerApplicationDialog } from "@/components/ReviewerApplicationDialog";
 
 const CTA = () => {
   return (
@@ -25,14 +27,18 @@ const CTA = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="gap-2 shadow-envelope text-lg px-8">
-              <FileText className="h-5 w-5" />
-              Submit Your First Manuscript
-            </Button>
-            <Button size="lg" variant="outline" className="gap-2 shadow-paper text-lg px-8">
-              <Shield className="h-5 w-5" />
-              Apply as Reviewer
-            </Button>
+            <SubmitManuscriptDialog>
+              <Button size="lg" className="gap-2 shadow-envelope text-lg px-8">
+                <FileText className="h-5 w-5" />
+                Submit Your First Manuscript
+              </Button>
+            </SubmitManuscriptDialog>
+            <ReviewerApplicationDialog>
+              <Button size="lg" variant="outline" className="gap-2 shadow-paper text-lg px-8">
+                <Shield className="h-5 w-5" />
+                Apply as Reviewer
+              </Button>
+            </ReviewerApplicationDialog>
           </div>
           
           <div className="mt-12 p-6 rounded-xl border border-border bg-card/50 backdrop-blur">
