@@ -3,7 +3,7 @@ import { FileText, Shield } from "lucide-react";
 
 const CTA = () => {
   return (
-    <section className="py-24 bg-gradient-to-br from-primary/10 via-background to-accent/5">
+    <section id="get-started" className="py-24 bg-gradient-to-br from-primary/10 via-background to-accent/5">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-2">

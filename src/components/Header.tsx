@@ -1,6 +1,6 @@
-import { Shield } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 import logo from "@/assets/logo.png";
+import { ScrollNavLink } from "./ScrollNavLink";
 
 const Header = () => {
   return (
@@ -20,19 +20,16 @@ const Header = () => {
           </div>
           
           <div className="flex items-center gap-4">
-            <Button variant="ghost" className="hidden md:inline-flex">
+            <ScrollNavLink href="#how-it-works" className="hidden md:inline-flex">
               How It Works
-            </Button>
-            <Button variant="ghost" className="hidden md:inline-flex">
-              For Researchers
-            </Button>
-            <Button variant="ghost" className="hidden md:inline-flex">
-              For Reviewers
-            </Button>
-            <Button variant="default" className="gap-2">
-              <Shield className="h-4 w-4" />
-              Connect Wallet
-            </Button>
+            </ScrollNavLink>
+            <ScrollNavLink href="#features" className="hidden md:inline-flex">
+              Features
+            </ScrollNavLink>
+            <ScrollNavLink href="#get-started" className="hidden md:inline-flex">
+              Get Started
+            </ScrollNavLink>
+            <ConnectButton />
           </div>
         </nav>
       </div>
