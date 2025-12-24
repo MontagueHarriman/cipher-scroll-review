@@ -184,8 +184,8 @@ export const useFHEManuscript = (parameters: {
         try {
           // Convert text to bytes array
           const contentBytes = ethers.toUtf8Bytes(content);
-          if (contentBytes.length > 32) {
-            throw new Error("Content too long (max 32 bytes)");
+          if (contentBytes.length === 0) {
+            throw new Error("Content cannot be empty");
           }
 
           setMessage("Creating encrypted input...");
@@ -225,6 +225,20 @@ export const useFHEManuscript = (parameters: {
             thisEthersSigner
           );
 
+          // Validate encrypted data before submission
+          if (!encryptedBytes || encryptedBytes.length === 0) {
+            throw new Error("Encryption failed: no encrypted bytes generated");
+          }
+          if (!inputProof || inputProof.length === 0) {
+            throw new Error("Encryption failed: no input proof generated");
+          }
+          
+          console.log("[submitManuscript] Submitting:", {
+            encryptedBytesCount: encryptedBytes.length,
+            inputProofLength: inputProof.length,
+            contractAddress: thisFheManuscriptAddress,
+          });
+
           const tx = await contract.submitManuscript(
             encryptedBytes,
             inputProof
@@ -245,7 +259,38 @@ export const useFHEManuscript = (parameters: {
           // Refresh manuscripts list
           await getAuthorManuscripts();
         } catch (error: any) {
-          setMessage(`Submission failed: ${error.message || "Unknown error"}`);
+          let errorMessage = "Unknown error";
+          
+          if (error?.reason) {
+            errorMessage = error.reason;
+          } else if (error?.message) {
+            errorMessage = error.message;
+          } else if (error?.data) {
+            // Try to decode revert reason if available
+            try {
+              const decoded = contract?.interface?.parseError(error.data);
+              if (decoded) {
+                errorMessage = decoded.name;
+              }
+            } catch {
+              // Ignore decode errors
+            }
+          }
+          
+          // Provide more helpful error messages
+          if (errorMessage.includes("execution reverted")) {
+            if (errorMessage.includes("Empty content")) {
+              errorMessage = "Encryption failed: Empty content detected";
+            } else if (errorMessage.includes("Content too long")) {
+              errorMessage = "Content too long";
+            } else if (errorMessage.includes("require(false)")) {
+              errorMessage = "FHE verification failed. Please ensure Hardhat node has FHEVM plugin enabled and try again.";
+            } else {
+              errorMessage = "Contract execution failed. This may be due to FHE verification issues. Please check your Hardhat node configuration.";
+            }
+          }
+          
+          setMessage(`Submission failed: ${errorMessage}`);
           console.error("Submit manuscript error:", error);
         } finally {
           isSubmittingRef.current = false;

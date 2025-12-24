@@ -86,8 +86,8 @@ export const SubmitManuscriptDialog = ({ children }: SubmitManuscriptDialogProps
     }
 
     const contentBytes = ethers.toUtf8Bytes(content);
-    if (contentBytes.length > 32) {
-      toast.error("Content too long (max 32 bytes). Please shorten your content.");
+    if (contentBytes.length === 0) {
+      toast.error("Please enter manuscript content");
       return;
     }
 
@@ -121,15 +121,14 @@ export const SubmitManuscriptDialog = ({ children }: SubmitManuscriptDialogProps
             <Label htmlFor="content">Manuscript Content</Label>
             <Textarea
               id="content"
-              placeholder="Enter your manuscript content (max 32 bytes for MVP - e.g., paper abstract or conclusion)"
+              placeholder="Enter your manuscript content"
               value={content}
               onChange={(e) => setContent(e.target.value)}
               rows={8}
               required
-              maxLength={32}
             />
             <p className="text-xs text-muted-foreground">
-              {ethers.toUtf8Bytes(content).length}/32 bytes - Content will be encrypted with FHE before submission
+              Content will be encrypted with FHE before submission
             </p>
           </div>
 
@@ -141,7 +140,7 @@ export const SubmitManuscriptDialog = ({ children }: SubmitManuscriptDialogProps
             </div>
           )}
 
-          {message && (
+          {message && isConnected && (
             <div className="rounded-lg border border-border bg-muted/50 p-4">
               <p className="text-sm text-muted-foreground">{message}</p>
             </div>
