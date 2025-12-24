@@ -53,7 +53,7 @@ const Features = () => {
             return (
               <Card
                 key={index}
-                className="group shadow-paper hover:shadow-envelope transition-all duration-300 border-border bg-card"
+                className="group shadow-paper hover:shadow-envelope transition-all duration-300 border-border bg-card hover:scale-105 active:scale-100 cursor-pointer"
               >
                 <CardContent className="p-8">
                   <div className="mb-4 inline-flex p-4 rounded-xl bg-gradient-seal">

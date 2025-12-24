@@ -38,7 +38,7 @@ const Hero = () => {
           
           {/* Stats */}
           <div className="mt-12 grid grid-cols-3 gap-6">
-            <div className="rounded-lg border border-border bg-card/50 p-6 backdrop-blur transition-transform hover:scale-105">
+            <div className="rounded-lg border border-border bg-card/50 p-6 backdrop-blur transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg cursor-pointer">
               <div className="text-3xl font-playfair font-bold text-primary">
                 100%
               </div>
@@ -46,7 +46,7 @@ const Hero = () => {
                 FHE Encrypted
               </div>
             </div>
-            <div className="rounded-lg border border-border bg-card/50 p-6 backdrop-blur transition-transform hover:scale-105">
+            <div className="rounded-lg border border-border bg-card/50 p-6 backdrop-blur transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg cursor-pointer">
               <div className="text-3xl font-playfair font-bold text-primary">
                 Zero
               </div>
@@ -54,7 +54,7 @@ const Hero = () => {
                 Plaintext on Chain
               </div>
             </div>
-            <div className="rounded-lg border border-border bg-card/50 p-6 backdrop-blur transition-transform hover:scale-105">
+            <div className="rounded-lg border border-border bg-card/50 p-6 backdrop-blur transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg cursor-pointer">
               <div className="text-3xl font-playfair font-bold text-primary">
                 Private Key
               </div>

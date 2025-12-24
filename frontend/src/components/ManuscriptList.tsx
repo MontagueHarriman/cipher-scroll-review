@@ -124,7 +124,7 @@ export const ManuscriptList = () => {
           const isAuthor = manuscript.author.toLowerCase() === address?.toLowerCase();
 
           return (
-            <Card key={manuscript.id}>
+            <Card key={manuscript.id} className="transition-all duration-200 hover:shadow-lg">
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div>
@@ -172,7 +172,7 @@ export const ManuscriptList = () => {
                         onClick={() => handleDecrypt(manuscript.id)}
                         disabled={isDecrypting}
                         className="w-full"
-                        variant="outline"
+                        variant="default"
                       >
                         {isDecrypting ? (
                           <>

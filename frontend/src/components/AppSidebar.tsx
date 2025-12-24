@@ -39,6 +39,10 @@ export function AppSidebar({ activeView, onViewChange }: AppSidebarProps) {
     },
   ];
 
+  const handleClick = (id: string) => {
+    onViewChange(id);
+  };
+
   return (
     <Sidebar>
       <SidebarContent>
@@ -49,11 +53,12 @@ export function AppSidebar({ activeView, onViewChange }: AppSidebarProps) {
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.id}>
                   <SidebarMenuButton
-                    onClick={() => onViewChange(item.id)}
+                    onClick={() => handleClick(item.id)}
                     isActive={activeView === item.id}
                     tooltip={item.title}
+                    className="transition-all duration-200 active:scale-95 hover:translate-x-1"
                   >
-                    <item.icon />
+                    <item.icon className="transition-transform duration-200 group-hover:scale-110" />
                     <span>{item.title}</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

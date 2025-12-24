@@ -43,7 +43,7 @@ const HowItWorks = () => {
             return (
               <Card
                 key={index}
-                className="relative p-8 shadow-paper hover:shadow-envelope transition-all duration-300 hover:-translate-y-2 bg-card border-border"
+                className="relative p-8 shadow-paper hover:shadow-envelope transition-all duration-300 hover:-translate-y-2 bg-card border-border active:scale-95"
               >
                 <div className="absolute -top-4 left-8 flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground font-bold shadow-lg">
                   {index + 1}
