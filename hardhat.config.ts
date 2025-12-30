@@ -48,6 +48,16 @@ const config: HardhatUserConfig = {
       chainId: 31337,
       url: "http://localhost:8545",
     },
+    localhost: {
+      accounts: {
+        mnemonic: MNEMONIC,
+        path: "m/44'/60'/0'/0/",
+        count: 10,
+      },
+      chainId: 31337,
+      url: "http://127.0.0.1:8545",
+      timeout: 120000,
+    },
     sepolia: {
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : {
         mnemonic: MNEMONIC,

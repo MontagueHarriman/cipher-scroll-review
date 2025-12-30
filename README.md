@@ -2,15 +2,13 @@
 
 **World's first truly blind academic review system using Fully Homomorphic Encryption (FHE) on blockchain.**
 
-> "全球第一个真正盲审的学术评审系统：论文全程 FHE 加密上链，连作者自己都看不到明文，只有本人私钥能解密查看，实现终极隐私保护。"
-
 ## 🌐 Live Demo
 
-- **Vercel Deployment**: [https://cipher-scroll-review.vercel.app/](https://cipher-scroll-review.vercel.app/)
+- **Vercel Deployment**: [https://cipher-scroll-review-pro.vercel.app/](https://cipher-scroll-review-pro.vercel.app/)
 
 ## 📹 Demo Video
 
-Watch the complete demo video: [cipher-scroll-review.mp4](./cipher-scroll-review.mp4)
+Watch the complete demo video: [cipher-scroll-review.mp4](https://youtu.be/YQnt-I__j4U)
 
 ## 🎯 Overview
 
